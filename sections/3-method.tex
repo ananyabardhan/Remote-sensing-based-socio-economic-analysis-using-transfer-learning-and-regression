@@ -1,0 +1,62 @@
+\chapter{Engineering-related content, Methodologies and Methods}
+% \thispagestyle{fancy}
+
+\section{Overview}
+This chapter describes the experimental methodology and techniques that we use to get our results.
+
+
+\section{Ridge Regression}
+It is a linear regression model which imposes square penalties on the linear coefficient dimensions. As the image features have a large size $(d=4096)$ regularisation helps to keep relatively small training sets from being overly matched. In an internal cross-validation circuit, the choice of a regularisation parameter has been made to preserve the integrity of the hold-out test details.
+The parameters of ridge regression are: \(alpha, ~fit~intercept, ~normalize, ~copy~X, ~max~iter,~tol\) and \(solver\). \(~Fit~intercept, ~normalize,\) and \(~copy~X\) are Boolean values. \(Alpha\) is the regularization strength. \(Fit~intercept\) is used to know whether to calculate the intercept or not. The regressor will be normalized before regression by subtracting the mean and divided by the l2-norm when \(Normalize\) is \(true\). The regressor may be copied or overwritten depending on whether \(copy~X\) is \(true\) or \(false\) respectively. These parameters are altered along with the number of splits $(10~or~5)$ and the obtained \(R^2\) scores are tabulated.
+
+\section{Evaluation Metrics}
+The following are used to evaluate the performance of the proposed model:
+\begin{itemize} 
+\item \(R^2\) Score: It provides an indication of fitness and therefore a measure of how well the unseen samples are likely to be predicted by the model due to the proportion of explained variance($y$). The best possible score is $1.0$ and may be negative (because the model may be worse off arbitrarily). A constant model that always predicts the expected value of $y$, regardless of the input features, would have an \(R^2\) value of $0.0$. If $\hat{y}_i$ is the predicted value of the \(i\)-th sample and $y_i$ is  is the corresponding true value for total \(n\) samples, the estimated \(R^2\) is defined as in \ref{eq:r_2}.
+
+\begin{equation}
+    R^2(y, \hat{y}) = 1 - \frac{\sum_{i=1}^{n} (y_i - \hat{y}_i)^2}{\sum_{i=1}^{n} (y_i - \bar{y})^2},
+    \label{eq:r_2}
+\end{equation}
+where $\bar{y} = \frac{1}{n} \sum_{i=1}^{n} y_i$, and $\sum_{i=1}^{n} (y_i - \hat{y}_i)^2 = \sum_{i=1}^{n} \epsilon_i^2$.\\
+
+\item Mean Square Error(MSE): the mean squared error or mean squared deviation of an estimator measures the average of the squares of the errors—that is, the average squared difference between the estimated values and the actual value. MSE is a risk function, corresponding to the expected value of the squared error loss. If $y_i$ is the set of actual values and $\hat{y}_i$ is the set of predicted values from a sample of $n$ points.The MSE is defined as in \ref{eq:MSE}
+\begin{equation}
+    MSE =  \frac{1}{n} \sum_{i=1}^{n} (y_i - \hat{y}_i)^2
+    \label{eq:MSE}
+\end{equation}
+i.e., MSE is the mean $\frac{1}{n} \sum_{i=1}^{n}$ of the squares of errors $(y_i - \hat{y}_i)^2$.  
+
+\end{itemize}
+\section{Datasets}
+
+The data used in this work are obtained from the following sources. 
+\begin{itemize}
+\item DHS\footnote{https://dhsprogram.com/data/}: We obtain the survey data from Demographic Health Survey website which is used as a source of household cluster information, cluster locations and wealth index; Nigeria - $867$ clusters, Mozambique - $225$ clusters, Rwanda - $492$, Madagascar - $375$ clusters.
+\item NOAA\footnote{https://ngdc.noaa.gov/eog/dmsp/downloadV4composites.html}: We obtain a high definition raster graphic file (.tiff) from National Oceanic and Atmospheric Administration which contains the world map with all the nightlights and provides us with all the nightlight information.
+
+\item Google Static Maps\footnote{https://cloud.google.com/maps-platform/}: We employ the google static maps API to obtain all the daytime images as required by giving the boundary shape of of each country as a input. All the images downloaded are of $400 \times 400$ at a $1km^2$ range. The following are the number of images considered for each country : Rwanda- $50,532$ images, Mozambique- $23,778$ images, Madagascar- $38,587$ images, Nigeria- $89,214$
+
+\end{itemize}
+
+\begin{table}[h!]
+\setlength\tabcolsep{4.5pt}
+\caption {Summary of the Datasets} \label{tab:1} 
+\begin{center}
+\begin{tabular}{|c|c|c|c|c|} 
+\hline
+Dataset & Rwanda & Madagascar & Mozambique & Nigeria    \\
+\hline
+DHS (clusters) & 492 & 375 & 225 & 867 \\ 
+Google Static Maps & 50,532 & 38,587 & 23,778 & 89,214\\ 
+NOAA & 1 & 1 & 1 & 1 \\
+\hline
+\end{tabular}
+\end{center}
+
+\end{table}
+
+
+
+\section{Summary}
+Ridge regression is a linear regression model which imposes square penalties on the linear coefficient dimensions. \(R^2\) score and Mean Square Error are considered for evaluating the proposed model. \(R^2\) score tells how likely the unseen samples can be predicted by the model. Mean Square Error is the mean of the squares of errors. The datasets used in this work are the household recode data from DHS which also gives the cluster locations and wealth index.A night-light image of the world map as a high definition raster graphic file from NOAA. Day time satellite images from Google Static Maps. These day time images are obtained after specifying the boundary shape file of each country.

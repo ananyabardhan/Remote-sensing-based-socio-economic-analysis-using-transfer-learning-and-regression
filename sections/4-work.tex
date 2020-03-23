@@ -1,0 +1,123 @@
+\chapter{The work}
+\section{Overview}
+This chapter mainly focuses on the results of the work. It consists of the qualitative analysis. This includes all the major experiments which have been tabulated with their values. 
+
+\section{Quantitative Analysis}
+All the previous work conducted in this domain was comprised of different countries and additional datasets. Hence, it was very difficult to compare the experimental results of this approach with any other work, because of the variance of datasets and consideration of other countries to conduct the analysis. For each country, we evaluated regression models for predictions with either $5$ or $10$-fold cross-validation. The results are tabulated in Table~\ref{tab:1} - \ref{tab:4} with various hyper parameter settings. 
+
+
+\newline
+\section{Sanity Test}
+
+\begin{table}[h!]
+ \caption{Retrained CNN Model of Rwanda}
+ \label{tab:3} 
+\begin{center}
+\begin{tabular}{|c|c|c|c|c|}
+\hline
+Trails & Epochs & Train Batch & Test Batch & $R^2$    \\
+\hline\hline
+1 & 10 & 1700 & 146 & 0.652 \\
+2 & 10 & 8000 & 1700 & 0.705 \\
+\hline\hline
+\end{tabular}
+\end{center}
+\end{table}
+
+In {Table~\ref{tab:3}},
+\newline the training and testing sample sizes were relatively small compared to the actual data. These $R^2$ scores were obtained from the data which was not shuffled. Two trails were conducted and only $10$ epochs were executed for each trail. Trail $1$ has $0.652$ $R^2$ score and as the sample sizes are increased in trail $2$, the $R^2$ score is increased. Some of the data got overlapped while performing these experiments resulting in these $R^2$ scores. Other experiments were carried out with shuffled data on different countries and the following are the results.
+
+
+\section{Domain-Specific Performance}
+In {Table~\ref{tab:4}}, these results were obtained using bigger train and test sample sizes. It was executed for $50$ epochs for each of the four countries. It is observed that using these sample sizes gives a reasonable \(R^2\) values and helps to achieve a high prediction value to generate a distinguishable heat map. We have three kinds of labels which include the \(R^2\) values and number of clusters of each of the four countries and also the values after merging the clusters of more than one country and we observe that even though combining Rwanda and Nigeria did not give a suitable \(R^2\), but when Rwanda, Nigeria and Mozambique were combined, then a high \(R^2\) value was obtained. These are the \(R^2\) values after prediction of the wealth index of the countries, Rwanda, Mozambique, Nigeria and Madagascar.These experiments were conducted using the best set of hyper parameters as obtained from Table~\ref{tab:1} and Table~\ref{tab:2}, which gave a high value of \(R^2\) before and after normalization. 
+
+\begin{table}[h!]
+ \caption{Domain-specific Analysis}
+ \label{tab:4} 
+\begin{center}
+\begin{tabular}{|c|c|c|c|c|c|}
+\hline
+Country & Epochs & Train size & Test size & \(R^2\) score & clusters \\
+\hline\hline
+Madagascar & 50 & 8000 & 2000 & 0.732 & 375 \\
+Nigeria & 50 &  16000    &  4000 & 0.456 & 867 \\
+Rwanda & 50 & 24000 & 6000 & 0.752 & 492 \\
+Mozambique & 50 &  8000    &  2000 & 0.762 & 225\\
+
+ 
+\hline \hline
+\end{tabular}
+\end{center}
+\end{table}
+
+
+\begin{table}[h!]
+ \caption{Mean Square Error}
+ \label{tab:9} 
+\begin{center}
+\begin{tabular}{|c|c|c|}
+\hline
+Country & 5-Fold & 80:20    \\
+\hline\hline
+Rwanda & 0.129 & 0.225 \\
+Mozambique & 0.216 & 0.211 \\
+Madagascar & 0.203 & 0.232\\
+Nigeria & 0.281 & 0.304\\
+\hline\hline
+\end{tabular}
+\end{center}
+\end{table}
+
+{Table~\ref{tab:9}}, shows the \ac{MSE} for both the K-fold and 80:20 train and test data spilt. Here, it can be observed that error values is less with the K-fold and hence it is used in the model.
+
+
+
+
+
+
+
+\section{Cross-Domain Analysis}
+
+\begin{table}[h!]
+ \caption{Merged Domain Performance Analysis}
+ \label{tab:7} 
+\begin{center}
+\begin{tabular}{|l|c|c|c|c|c|}
+\hline
+\hspace{1cm}{Merged Domain}   & clusters & \(R^2\) score   \\
+\hline\hline
+Rwanda, Nigeria  & 1359 & 0.634   \\
+Rwanda, Nigeria, Mozambique  & 1584 & 0.782  \\
+\hline\hline
+ 
+\end{tabular}
+\end{center}
+\end{table}
+
+In Table~\ref{tab:7}, the models of different countries were merged, and it can be seen that the \(R^2\) score for the combined model of Rwanda and Nigeria is less, as due to Nigeria's score the total performance decreases. But when models of Rwanda, Nigeria and Mozambique are combined, it gives a higher score and performs better.
+
+
+\section{Comparision with other Regession Models}
+
+\begin{table}[h!]
+ \caption{Results using differnt rigression models}
+ \label{tab:8} 
+\begin{center}
+\begin{tabular}{|l|c|c|c|c|c|}
+\hline
+Country & clusters & ridge & lasso & linear   \\
+\hline\hline
+Rwanda  & 492 & 0.752 & 0.742 & 0.739  \\
+Mozambique & 225 & 0.762 & 0.757 & 0.720\\
+Madagascar & 375 & 0.732 & 0.729 & 0.720\\
+Nigeria & 867 & 0.456 & 0.427 & 0.359\\
+
+\hline\hline
+ 
+\end{tabular}
+\end{center}
+\end{table}
+In Table~\ref{tab:8}, the different models of regression is been compared, and it can be found that among Linear, Lasso and Ridge Regression, the Ridge Regression gives the better \(R^2\) scores. Therefore, we go forward with Ridge Regression to get the results.
+
+\section{Summary}
+The experimental results are tabulated. From these tables it can be observed that of all the regression models, Ridge regression has better performance. When considering the time consumption for various regression models, Ridge takes optimal time to do the computation. 

@@ -1,0 +1,35 @@
+\chapter{Theoretical Background}
+% \thispagestyle{fancy}
+
+\section{Overview}
+This chapter provides the literature review of the project. It discusses about various papers related to this work. Various methods that have been used to predict poverty previously are compared with this work. Remote sensing techniques that have been used to do other experiments are discussed.
+
+\section{Related Work}
+In the past, researchers have worked on various strategies to estimate poverty distribution within different countries. Detailed measurements of the economic characteristics of a region have a great impact on both science and strategy. The surveys conducted are based on these policies to make decisions on the allocation of scare resources to track the development towards improving human lives.
+
+Combining the survey data, remote sensing data and new machine learning techniques, researches have been performed on various tasks such as poverty prediction, urban planning, crop yield prediction~\cite{piaggesi2019predicting}. 
+
+In~\cite{jean2016combining}, the authors proposed a transfer learning methodology, where nightlight intensities are used as an intermediate proxy to map poverty in five African countries. When given the inexact data about both daytime imagery and the position of clusters, their models outperform. The proposed work is a modification of~\cite{jean2016combining} restricting to fewer data sets and other African countries. 
+
+In~\cite{perez2017poverty}, have trained a deep neural network to predict poverty from various satellite images without proxies and used other types of remote sensing data for the same task. Other works from~\cite{chen2006remote} analyze the temperature distribution and changes within the city by extracting bare land from satellite images to show its impact on the socioeconomic development.
+
+The work from~\cite{piaggesi2019predicting} shows that they have worked on a similar model like~\cite{jean2016combining}, additionally checking the feasibility of predicting household income of various municipality levels in a city in the USA.
+
+Another work in~\cite{munyati2014inferring}, two high resolution satellite imagery from 2001 and 2010 have been used to examine three socio-economic variables such as main dwelling, toilet facilities and energy resources for cooking. They targeted the image data from 2001 StatsSA census and the new images from 2011 census.They used spatial enhancement and used nearest neighbour resampling algorithm. The image subsets were then used to study the suburban areas with more prominence.
+
+In~\cite{ghosh2013using}, they predict the \ac{GDP} using nightlight images from \ac{NOAA}, \ac{EOG} and the \ac{NGDC}. Considering four countries- U.S., China, Mexico and India. The sum of light intensities and official \ac{GDP} values were regressed. And by using the ratios and sum of lights the value for each  administrative area were predicted.
+
+
+Inline with this work, the following regions have been analyzed in the past:
+\begin{itemize}
+
+\item Nairobi- Algorithms were built to process satellite images and make assumptions on the economic state of slums based on the reflective index of the roofs and night light images\cite{zhao2016spectral}.
+\item USA- Nightlight images and daytime images were used to observe the density of settlement and the fall line to set up coasts close by for reducing shipment costs.
+\item Indonesia- Study of deforestation and 1997 wildfires \cite{xie2016transfer}. 
+
+\end{itemize}
+
+There is no systematic study of the regions this work focuses on to compare the proposed model results with existing model results.
+
+\section{Summary}
+There have been various researches conducted in the past. Remote sensing and machine learning are the common domains chosen for these experiments. Remote sensing is used for poverty prediction, urban planning, crop yield prediction, temperature distribution etc. Aided by machine learning, researchers have put their interest to perform experiments to study deforestation, wild fires, population settlements,   Our work is inspired from~\cite{jean2016combining} leading us to predict poverty using satellite imagery, survey data and night-light data. 

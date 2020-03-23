@@ -1,0 +1,132 @@
+\newpage
+\appendix
+\newpage
+\etocdepthtag.toc{mtappendix}
+\etocsettagdepth{mtchapter}{none}
+\etocsettagdepth{mtappendix}{subsection}
+\etoctocstyle{1}{Appendix - Contents}
+\tableofcontents
+\newpage
+
+
+\chapter{First Appendix}
+
+
+\section{Impact of Data Normalization}
+
+The following are the experiments performed with data normalization. Table~\ref{tab:1} and table~\ref{tab:2} are the observations before and after normalization respectively. These were the results taken for input data of day-time features obtained after merging the DHS data with day-time images. Table~\ref{tab:3} is built using the results obtained with the input data of day-time images after grouping them into classes low, medium and high. Merging features extracted from the retrained \ac{CNN} model and the wealth index of the clusters as input data the \(R^2\) values obtained and tabulated in Table~\ref{tab:4}.
+
+
+\begin{table}[h!]
+
+\caption {Ridge Regression before data normalization} \label{tab:1} 
+\begin{center}
+\begin{tabular}{|c|c|c|c|c|c|} 
+\hline
+K-Fold & Alpha & Fit intercept & Normalize & Copy X & T(or)F    \\
+\hline \hline
+10 & 0.752 & 0.725 & 0.752 & 0.725 & TRUE \\ 
+10& 0.581 & 0.562 & 0.581 & 0.581 & FALSE \\ 
+5 & 0.761 & 0.753 & 0.761 & 0.758 & TRUE  \\ 
+5 & 0.758 & 0.758 & 0.761 & 0.758 & FALSE  \\ 
+\hline \hline
+\end{tabular}
+\end{center}
+\end{table}
+
+%\centerline{\includegraphics{ref{tab:TABLE I}}}
+In {Table~\ref{tab:1}}, $10$ and $5$ fold cross validation were considered for ridge regression before normalization. From the above table, it can be depicted that all the parameters give better \(R^2\) results with $5$ folds. In some cases the \(R^2\) value remains the same even after change in the input parameter. 
+
+
+\begin{table}[h!]
+ \caption{Ridge Regression after data normalization} 
+\label{tab:2} 
+\begin{center}
+\begin{tabular}{|c|c|c|c|c|c|} 
+\hline
+K-Fold & Alpha & Fit intercept & Normalize & Copy X & T(or)F    \\
+\hline\hline
+10 & 0.752 & 0.725 & 0.752 & 0.725 & TRUE \\ 
+10 & 0.581 & 0.562 & 0.702 & 0.581 & FALSE \\ 
+5 & 0.761 & 0.725 & 0.761 & 0.758 & TRUE \\ 
+5 & 0.758 & 0.725 & 0.752 & 0.725 & FALSE \\ 
+\hline\hline
+\end{tabular}
+\end{center}
+\end{table}
+
+In {Table~\ref{tab:2}}, this is the observation made after conducting normalization using $10$ and $5$ folds. It can also be depicted that the \(R^2\) values were different under some parameters before and after normalization. There was a decrease in the score for $5$ fold after normalization while, the $10$ fold score still varies accordingly.\newline
+The parameters giving the best results from Table~\ref{tab:1} and Table~\ref{tab:2} are used to carry on further experiments to give better \(R^2\) scores.
+
+\section{Time Analysis}
+
+\begin{table}[h!]
+ \caption{Time Analysis for Rwanda(in sec)}
+ \label{tab:10} 
+\begin{center}
+\begin{tabular}{|c|c|c|c|}
+\hline
+Country & Linear & Lasso & Ridge   \\
+\hline\hline
+Rwanda & 0.011 & 0.038 & 0.041 \\
+Mozambique & 0.084 & 0.093 & 0.021 \\
+Madagascar & 0.078 & 0.079 & 0.019\\
+Nigeria & 0.078 & 0.079 & 0.021\\
+\hline\hline
+\end{tabular}
+\end{center}
+\end{table}
+In {Table~\ref{tab:10}}, the time taken to compute the results using the three regression models can be observed. But the time taken by Ridge Regression is very less compared to the others.
+
+\section{Comparing results from 5-fold cross validation and 80:20 split}
+
+\begin{table}[h!]
+ \caption{\(R^2\) Scores: 5-fold Cross Validation}
+ \label{tab:10} 
+\begin{center}
+\begin{tabular}{|c|c|c|c|}
+\hline
+Country & Linear & Lasso & Ridge   \\
+\hline\hline
+Rwanda &  0.752 &  0.742 & 0.739 \\
+Mozambique &0.762 & 0.757 & 0.749 \\
+Madagascar & 0.732 & 0.729 & 0.720\\
+Nigeria & 0.686 & 0.627 & 0.609\\
+\hline\hline
+\end{tabular}
+\end{center}
+\end{table}
+
+\begin{table}[h!]
+ \caption{\(R^2\) Scores: 5-fold Cross Validation}
+ \label{tab:10} 
+\begin{center}
+\begin{tabular}{|c|c|c|c|}
+\hline
+Country & Linear & Lasso & Ridge   \\
+\hline\hline
+Rwanda &   0.740 &  0.735& 0.739 \\
+Mozambique &0.762 & 0.751 & 0.749 \\
+Madagascar &0.745 & 0.729 & 0.720\\
+Nigeria & 0.642 & 0.620 & 0.609\\
+\hline\hline
+\end{tabular}
+\end{center}
+\end{table}
+
+
+
+
+
+
+
+
+
+
+
+
+
+\section{GitHub Repository}
+The GitHub repository for this project:
+\newline
+https://github.com/SreeTejaVarma/socio-economic-analysis-using-satellite-imagery
